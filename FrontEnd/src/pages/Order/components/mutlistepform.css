@@ -1,0 +1,28 @@
+.multi-step-form {
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .progress-bar {
+    width: 100%;
+    background-color: #f3f3f3;
+    height: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .progress {
+    height: 10px;
+    background-color: #4caf50;
+  }
+  
+  .error {
+    color: red;
+    font-size: 0.9em;
+  }
+  
+  .button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  

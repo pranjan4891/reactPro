@@ -1,0 +1,83 @@
+import React, { Suspense, lazy, useState, startTransition } from 'react';
+import { BrowserRouter as Router, Route, Routes, Navigate, useLocation } from 'react-router-dom';
+import { Provider, useSelector } from 'react-redux';
+import LoadingSpinner from './components/LoadingSpinner/LoadingSpinner';
+import { RootState, store } from './store';
+import { roleBasedRoutes } from './utils/roles';
+import Sidebar from './components/Sidebar/Sidebar';
+import Header from './components/Header/Header';
+
+// const MainLayout = lazy(() => import('./layouts/MainLayout'));
+const Login = lazy(() => import('./pages/Login/Login'));
+const Dashboard = lazy(() => import('./pages/Dashboard/Dashboard'));
+const Home = lazy(() => import('./pages/Home/Home'));
+
+
+function App() {
+  const [currentPath, setCurrentPath] = useState('/');
+
+  const handleNavigation = (path: string) => {
+    startTransition(() => {
+      setCurrentPath(path);
+    });
+  };
+
+  return (
+    <Provider store={store}>
+      <Router>
+        <div className="app">
+          <Routes>
+            <Route path="/login" element={<Login />} />
+            <Route path="/*" element={<MainLayout onNavigate={handleNavigation} />} />
+          </Routes>
+        </div>
+      </Router>
+    </Provider>
+  );
+}
+
+interface MainLayoutProps {
+  onNavigate: (path: string) => void;
+}
+
+const MainLayout: React.FC<MainLayoutProps> = ({ onNavigate }) => {
+  const location = useLocation();
+  const shouldShowSidebar = location.pathname !== '/login';
+  const { isAuthenticated, role } = useSelector((state: RootState) => state.auth);
+
+  const allowedRoutes = [...roleBasedRoutes[role] || [], ...roleBasedRoutes.accessibleToAll];
+
+  if (!isAuthenticated) {
+    return <Navigate to="/login" />;
+  }
+
+  return (
+    <>
+      {shouldShowSidebar && <Sidebar onNavigate={onNavigate} />}
+      <div className={`content ${shouldShowSidebar ? '' : 'no-sidebar'}`}>
+        <div className="pghdr">
+          <Header />
+        </div>
+        <div className="pgbody">
+          <Suspense fallback={<LoadingSpinner />}>
+            <Routes>
+              {/* {allowedRoutes.includes('/') && <Route path="/" element={<Dashboard />} />} */}
+              {allowedRoutes.includes('/dashboard') && <Route path="/dashboard" element={<Dashboard />} />}
+              {/* {allowedRoutes.includes('/guests') && <Route path="/guests" element={<GuestsPage />} />}
+              {allowedRoutes.includes('/users') && <Route path="/users" element={<UsersPage />} />}
+              {allowedRoutes.includes('/reports') && <Route path="/reports" element={<ReportsPage />} />}
+              {allowedRoutes.includes('/settings') && <Route path="/settings" element={<SettingsPage />} />}
+              {allowedRoutes.includes('/locations') && <Route path="/locations" element={<LocationPage />} />}
+              {allowedRoutes.includes('/venue') && <Route path="/venue" element={<VenuePage />} />} */}
+              {/* Fallback for unknown paths */}
+              <Route path="*" element={<Navigate to={allowedRoutes[0] || '/login'} />} />
+              alert('u')
+            </Routes>
+          </Suspense>
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default App;

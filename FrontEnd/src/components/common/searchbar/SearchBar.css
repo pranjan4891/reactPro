@@ -1,0 +1,15 @@
+/* styles.css */
+input {
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    width: 100%;
+  }
+  
+  input:focus {
+    outline: none; /* Remove the focus outline */
+    border-color: #007bff; /* Optional: Highlight border on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Optional: Add a slight shadow */
+  }
+  

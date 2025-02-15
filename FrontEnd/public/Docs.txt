@@ -1,0 +1,31 @@
+src/
+│
+├── assets/                   # Images, fonts, global styles
+│   └── images/               # Image files
+│
+├── components/               # Shared components (e.g., buttons, cards)
+│   └── Button.tsx
+│
+├── pages/                    # Page components
+│   ├── Login/                # Each page in its own folder
+│   │   ├── Login.tsx
+│   │   └── login.module.css   # Use module CSS for scoped styles
+│   ├── Dashboard/
+│   │   ├── Dashboard.tsx
+│   │   └── dashboard.module.css
+│   └── Home/                 # Other pages can follow this structure
+│       ├── Home.tsx
+│       └── home.module.css
+│
+├── layouts/                  # Layouts (Header, Footer, Sidebar, etc.)
+│   └── MainLayout.tsx
+│
+├── services/                 # API calls, service functions
+│   └── authService.ts
+│
+├── utils/                    # Utility functions
+│   └── helpers.ts
+│
+├── App.tsx                   # Root component
+├── index.css                 # Global styles (Tailwind included here)
+└── main.tsx                  # App entry point

@@ -1,0 +1,4 @@
+input:focus {
+    outline: none; /* Remove the focus outline for all input elements */
+    /* border: transparent;     */
+}

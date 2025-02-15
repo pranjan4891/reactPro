@@ -1,0 +1,216 @@
+
+
+// UNAUTHORIZED
+{
+    "success": false,
+    "data": null,
+    "exceptions": null,
+    "httpStatusCode": 401,
+    "remarks": "UNAUTHORIZED",
+    "msg": "Unauthorized",
+    "errors": null
+}
+
+// SERVER_ERROR
+{
+    "success": false,
+    "data": null,
+    "exceptions": null,
+    "httpStatusCode": 500,
+    "remarks": "SERVER_ERROR",
+    "msg": "Internal server error",
+    "errors": null
+}
+
+// VALIDATION_FAILED
+{
+    "success": false,
+    "data": null,
+    "exceptions": null,
+    "httpStatusCode": 400,
+    "remarks": "VALIDATION_FAILED",
+    "msg": "An error occurred",
+    "errors": {
+        "courier_partners": [
+            "courier_partners must be an array"
+        ]
+    }
+}
+
+
+
+// record not found
+{            
+            errorCode: 'NO_RECORD_FOUND',
+            remarks: 'NO_RECORD_FOUND',
+            exceptions: null,
+            errors: null,
+            msg: `No Record found`,
+            data: []          
+          }    
+
+throw new NotFoundException(
+          {            
+            errorCode: 'NO_RECORD_FOUND',
+            remarks: 'NO_RECORD_FOUND',
+            exceptions: null,
+            errors: null,
+            msg: `No Record found`,
+            data: []          
+          }          
+        );
+
+
+throw new ForbiddenException(
+            {
+                msg: 'Forbidden access', 
+                errorCode: 'FORBIDDEN_ACCESS',
+                remarks: 'FORBIDDEN_ACCESS',
+                exceptions: null,
+                errors: FORBIDDEN_MESSAGE
+            }
+        );
+
+
+send BadRequestException for more check mmy-test.service
+
+throw new BadRequestException({
+      msg: 'Validation error: Required fields are missing',
+      remarks: 'VALIDATION_FAILED',
+      errors: {
+        pickupLocation: ['username'],
+      }
+      ,
+});
+
+
+errorCode can get by HttpStatusCode
+
+"errorCode": {
+        "100": "Continue",
+        "101": "SwitchingProtocols",
+        "102": "Processing",
+        "103": "EarlyHints",
+        "200": "Ok",
+        "201": "Created",
+        "202": "Accepted",
+        "203": "NonAuthoritativeInformation",
+        "204": "NoContent",
+        "205": "ResetContent",
+        "206": "PartialContent",
+        "207": "MultiStatus",
+        "208": "AlreadyReported",
+        "226": "ImUsed",
+        "300": "MultipleChoices",
+        "301": "MovedPermanently",
+        "302": "Found",
+        "303": "SeeOther",
+        "304": "NotModified",
+        "305": "UseProxy",
+        "306": "Unused",
+        "307": "TemporaryRedirect",
+        "308": "PermanentRedirect",
+        "400": "BadRequest",
+        "401": "Unauthorized",
+        "402": "PaymentRequired",
+        "403": "Forbidden",
+        "404": "NotFound",
+        "405": "MethodNotAllowed",
+        "406": "NotAcceptable",
+        "407": "ProxyAuthenticationRequired",
+        "408": "RequestTimeout",
+        "409": "Conflict",
+        "410": "Gone",
+        "411": "LengthRequired",
+        "412": "PreconditionFailed",
+        "413": "PayloadTooLarge",
+        "414": "UriTooLong",
+        "415": "UnsupportedMediaType",
+        "416": "RangeNotSatisfiable",
+        "417": "ExpectationFailed",
+        "418": "ImATeapot",
+        "421": "MisdirectedRequest",
+        "422": "UnprocessableEntity",
+        "423": "Locked",
+        "424": "FailedDependency",
+        "425": "TooEarly",
+        "426": "UpgradeRequired",
+        "428": "PreconditionRequired",
+        "429": "TooManyRequests",
+        "431": "RequestHeaderFieldsTooLarge",
+        "451": "UnavailableForLegalReasons",
+        "500": "InternalServerError",
+        "501": "NotImplemented",
+        "502": "BadGateway",
+        "503": "ServiceUnavailable",
+        "504": "GatewayTimeout",
+        "505": "HttpVersionNotSupported",
+        "506": "VariantAlsoNegotiates",
+        "507": "InsufficientStorage",
+        "508": "LoopDetected",
+        "510": "NotExtended",
+        "511": "NetworkAuthenticationRequired",
+        "Continue": 100,
+        "SwitchingProtocols": 101,
+        "Processing": 102,
+        "EarlyHints": 103,
+        "Ok": 200,
+        "Created": 201,
+        "Accepted": 202,
+        "NonAuthoritativeInformation": 203,
+        "NoContent": 204,
+        "ResetContent": 205,
+        "PartialContent": 206,
+        "MultiStatus": 207,
+        "AlreadyReported": 208,
+        "ImUsed": 226,
+        "MultipleChoices": 300,
+        "MovedPermanently": 301,
+        "Found": 302,
+        "SeeOther": 303,
+        "NotModified": 304,
+        "UseProxy": 305,
+        "Unused": 306,
+        "TemporaryRedirect": 307,
+        "PermanentRedirect": 308,
+        "BadRequest": 400,
+        "Unauthorized": 401,
+        "PaymentRequired": 402,
+        "Forbidden": 403,
+        "NotFound": 404,
+        "MethodNotAllowed": 405,
+        "NotAcceptable": 406,
+        "ProxyAuthenticationRequired": 407,
+        "RequestTimeout": 408,
+        "Conflict": 409,
+        "Gone": 410,
+        "LengthRequired": 411,
+        "PreconditionFailed": 412,
+        "PayloadTooLarge": 413,
+        "UriTooLong": 414,
+        "UnsupportedMediaType": 415,
+        "RangeNotSatisfiable": 416,
+        "ExpectationFailed": 417,
+        "ImATeapot": 418,
+        "MisdirectedRequest": 421,
+        "UnprocessableEntity": 422,
+        "Locked": 423,
+        "FailedDependency": 424,
+        "TooEarly": 425,
+        "UpgradeRequired": 426,
+        "PreconditionRequired": 428,
+        "TooManyRequests": 429,
+        "RequestHeaderFieldsTooLarge": 431,
+        "UnavailableForLegalReasons": 451,
+        "InternalServerError": 500,
+        "NotImplemented": 501,
+        "BadGateway": 502,
+        "ServiceUnavailable": 503,
+        "GatewayTimeout": 504,
+        "HttpVersionNotSupported": 505,
+        "VariantAlsoNegotiates": 506,
+        "InsufficientStorage": 507,
+        "LoopDetected": 508,
+        "NotExtended": 510,
+        "NetworkAuthenticationRequired": 511
+    },
